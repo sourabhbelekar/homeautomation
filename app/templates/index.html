@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+body {
+  background: #DBFBC6;
+  font-size: 80%;
+  padding: 20px;
+}
+
+main {
+  position: relative;
+  background: #DBFBC6;
+  height: 200px;
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  resize: both;
+  overflow: auto;
+}
+
+main div {
+  
+  color: white;
+  width: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 20px;
+  resize: both;
+  overflow: auto;
+}
+</style>
+    <meta charset="UTF-8">
+    <title>Homeautomation Controller</title>
+
+</head>
+<body>
+<main>
+    <div>
+{% block content %}
+ <form action = "/control" method = "POST">
+   <select name= devices >
+    {% for device in devices %}
+    <option value= "{{'http://'+device.ipaddress+'/'}}">{{device.devicename}}</option>"
+    {% endfor %}
+   </select>
+<input type = "submit" value = "submit" />
+
+ </form>
+
+{% endblock content %}
+
+</div>
+</main>
+</body>
+</html>
+
